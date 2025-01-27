@@ -1,0 +1,23 @@
+﻿<link rel="stylesheet" href="~/css/check.css" />
+@model CheckMailVM
+<link rel="stylesheet" href="~/css/check.css" />
+
+<div class="main_page col-12" style="background-image:url('@Url.Content("~/images/airground.png")')">
+    <div class="main_content col-12">
+        <div class="check_content">
+            <h2 class="h_forget">Forgot Password</h2>
+            <form asp-action="Forgot" class="form_check col-12">
+                <div class="in_lab col-12">
+                    <label asp-for="Email" class="lab_title col-12">Email</label>
+                    <input asp-for="Email" type="text" class="input_des col-12" />
+                    <span asp-validation-for="Email" class="span_in col-12"></span>
+                </div>
+                <button type="submit" class="btn_submit">Forgot Password</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial.cshtml" />
+}

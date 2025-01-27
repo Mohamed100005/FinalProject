@@ -1,0 +1,16 @@
+﻿@model Country
+<link rel="stylesheet" href="~/css/countdet.css" />
+
+<div class="main_page col-12">
+    <div class="main_content col-5">
+        <div class="upper_content col-12">
+            <h1 class="mb-4">
+                Create a country
+            </h1>
+            <form asp-action="Create" method="post">
+                <input class="input-group-text mb-3" type="text" placeholder="Enter country name" value="@Model.Name" />
+                <button asp-action="Create" class="btn-primary" type="submit">Create</button>
+            </form>
+        </div>
+    </div>
+</div>

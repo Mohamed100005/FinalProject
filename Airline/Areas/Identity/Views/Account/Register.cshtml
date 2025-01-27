@@ -1,0 +1,146 @@
+﻿@model RegisterVM
+<link rel="stylesheet" href="~/css/reg.css" />
+<div class="main_page">
+    <div class="main_content shadow col-10">
+        <div class="left_img" style="background-image:url('@Url.Content("~/images/air.jpg")')"></div>
+
+        <div class="right_area">
+            <div class="right_content col-12">
+                <h3 class="title_right col-12">Signup</h3>
+                <div class="choices col-12">
+                    <div class="choice">
+                        <i class="fa-solid fa-person i_choice"></i>
+                        <a href="" class="a_choice">
+                            <i class="fa-solid fa-check"></i>
+                        </a>
+                    </div>
+                    <div class="choice">
+                        <i class="fa-solid fa-synagogue i_choice"></i>
+                        <a asp-controller="CompanyAccount" asp-action="Index" class="a_choice"></a>
+                    </div>
+                </div>
+                <form asp-action="Register" class="form_right col-12" enctype="multipart/form-data">
+                    <div class="profile_picture col-12">
+                        <div class="img_prof" style="background-image:url('@Url.Content("~/images/unknown.png")')"></div>
+                        <input type="file" id="inp_img" name="file" />
+                        <div class="btn_label">
+                            <label for="inp_img" class="lab_pict">change photo</label>
+                            <p class="btn_del"><i class="fa-solid fa-trash-can i_del"></i> delete</p>
+                        </div>
+                    </div>
+                    <div class="inputs col-12">
+
+                        <div class="in_lab col-12">
+                            <label asp-for="Name" class="lab_title col-12">Name</label>
+                            <input asp-for="Name" type="text" class="input_des col-12" />
+                            <span asp-validation-for="Name" class="span_in col-12"></span>
+                        </div>
+
+                        <div class="in_lab col-12">
+                            <label asp-for="UserName" class="lab_title col-12">Username</label>
+                            <input asp-for="UserName" type="text" class="input_des col-12" />
+                            <span asp-validation-for="UserName" class="span_in col-12"></span>
+                        </div>
+
+                        <div class="in_lab col-12">
+                            <label asp-for="Email" class="lab_title col-12">Email</label>
+                            <input asp-for="Email" type="email" class="input_des col-12" />
+                            <span asp-validation-for="Email" class="span_in col-12"></span>
+                        </div>
+
+                        <div class="in_lab col-12">
+                            <label asp-for="Password" class="lab_title col-12">Password</label>
+                            <div class="pass_field col-12">
+                                <input asp-for="Password" type="password" class="input_pass" />
+                                <i class="fa-regular fa-eye i_pass"></i>
+                                <div class="line_eye"></div>
+                            </div>
+                            <span asp-validation-for="Password" class="span_in col-12"></span>
+                        </div>
+
+                        <div class="in_lab col-12">
+                            <label asp-for="ConfirmPassword" class="lab_title col-12">Confirm Password</label>
+                            <div class="pass_field col-12">
+                                <input asp-for="ConfirmPassword" type="password" class="input_con" />
+                                <i class="fa-regular fa-eye i_pass_con"></i>
+                                <div class="line_eye_con"></div>
+                            </div>
+                            <span asp-validation-for="ConfirmPassword" class="span_in col-12"></span>
+                        </div>
+
+                        <div class="in_lab col-12">
+                            <label asp-for="Date" class="lab_title col-12">Birth date</label>
+                            <input asp-for="Date" type="date" class="input_des col-12" />
+                            <span asp-validation-for="Date" class="span_in col-12"></span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn_submit">Signup</button>
+                </form>
+
+                <div class="lower_area">
+                    <p class="p_lower">Already have an account ? <a asp-action="Login" class="a_lower">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial.cshtml" />
+    <script>
+        const inp_img = document.getElementById('inp_img');
+        const img_prof = document.querySelector('.img_prof');
+        const btn_del = document.querySelector('.btn_del');
+        const main_page = document.querySelector('.main_page');
+
+        inp_img.addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    img_prof.style.backgroundImage = `url('${e.target.result}')`;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                img_prof.style.backgroundImage = "url('/images/unknown.png')";
+            }
+        });
+
+        btn_del.addEventListener('click', function () {
+            img_prof.style.backgroundImage = "url('/images/unknown.png')";
+            inp_img.value = '';
+
+        });
+
+        const i_pass = document.querySelector('.i_pass');
+        const input_pass = document.querySelector('.input_pass');
+        const line_eye = document.querySelector('.line_eye');
+
+        i_pass.onclick = function () {
+            if (input_pass.type == 'password') {
+                line_eye.classList.add('diapp');
+                input_pass.type = 'text';
+            }
+            else {
+                line_eye.classList.remove('diapp');
+                input_pass.type = 'password';
+            }
+        };
+
+        const i_pass_con = document.querySelector('.i_pass_con');
+        const input_con = document.querySelector('.input_con');
+        const line_eye_con = document.querySelector('.line_eye_con');
+
+        i_pass_con.onclick = function () {
+            if (input_con.type == 'password') {
+                line_eye_con.classList.add('diapp_con');
+                input_con.type = 'text';
+            }
+            else {
+                line_eye_con.classList.remove('diapp_con');
+                input_con.type = 'password';
+            }
+        };
+
+    </script>
+}

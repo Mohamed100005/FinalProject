@@ -1,0 +1,76 @@
+﻿@model LoginVM
+<link rel="stylesheet" href="~/css/logins.css" />
+<div class="main_page">
+    <div class="main_content shadow col-10">
+        <div class="left_img" style="background-image:url('@Url.Content("~/images/air.jpg")')"></div>
+
+        <div class="right_area">
+            <div class="right_content col-12">
+                <div class="right_upper col-12">
+                    <h2 class="title_right col-12">Login</h2>
+                    <h4 class="h_welcome col-12">Welcome back! Please login to your account.</h4>
+                    @foreach (var provider in Model.ExternalLogins)
+                    {
+                        <a asp-action="ExternalLogin" asp-route-provider="@provider.Name" class="a_google col-12">
+                            <img src="~/images/google.png" class="img_google" />
+                            <p class="p_google">sign in with @provider.DisplayName</p>
+                        </a>
+                    }
+                </div>
+                <p class="middle">OR</p>
+                <form asp-action="Login" class="form_right col-12">
+                    <div class="inputs col-12">
+                        <div class="in_lab col-12">
+                            <label asp-for="Account" class="lab_title col-12">Username or Email</label>
+                            <input asp-for="Account" type="text" class="input_des col-12" />
+                            <span asp-validation-for="Account" class="span_in col-12"></span>
+                        </div>
+
+                        <div class="in_lab col-12">
+                            <label asp-for="Password" class="lab_title col-12">Password</label>
+                            <div class="pass_field col-12">
+                                <input asp-for="Password" type="password" class="input_pass" />
+                                <i class="fa-regular fa-eye i_pass"></i>
+                                <div class="line_eye"></div>
+                            </div>
+                            <span asp-validation-for="Password" class="span_in col-12"></span>
+                        </div>
+                        <div asp-validation-summary="ModelOnly" class="span_in col-12" style="padding:0 !important;margin:0 !important;"></div>
+                        <div class="check_forgot col-12">
+                            <div class="check_area">
+                                <input asp-for="Check" type="checkbox" />
+                                <label asp-for="Check" class="lab_title">Remeber me</label>
+                            </div>
+                            <a asp-action="Forgot" class="a_lower">Forgot Password ?</a>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn_submit">Login</button>
+                </form>
+
+                <div class="lower_area">
+                    <p class="p_lower">Don’t have an account ? <a asp-action="Register" class="a_lower">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial.cshtml" />
+    <script>
+        const i_pass = document.querySelector('.i_pass');
+        const input_pass = document.querySelector('.input_pass');
+        const line_eye = document.querySelector('.line_eye');
+
+        i_pass.onclick = function () {
+            if (input_pass.type == 'password') {
+                line_eye.classList.add('diapp');
+                input_pass.type = 'text';
+            }
+            else {
+                line_eye.classList.remove('diapp');
+                input_pass.type = 'password';
+            }
+        };
+    </script>
+}

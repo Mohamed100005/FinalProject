@@ -1,0 +1,22 @@
+﻿@model City
+<link rel="stylesheet" href="~/css/countdet.css" />
+
+<div class="main_page col-12">
+    <div class="main_content col-5">
+        <div class="upper_content col-12">
+            <h1 class="mb-4">
+                Create a city
+            </h1>
+            <form asp-action="Create" method="post">
+                <input class="input-group-text mb-3" type="text" name="name" placeholder="Enter city name" value="@Model.Name" />
+                <select>
+                    @foreach (var item in ViewBag.City)
+                    {
+                        <option value="value">@item.Name</option>
+                    }
+                </select>
+                <button class="btn-primary" type="submit">Create</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@model ResetVM
+<link rel="stylesheet" href="~/css/reset.css" />
+<div class="main_page col-12" style="background-image:url('@Url.Content("~/images/airground.png")')">
+    <div class="main_content col-12">
+        <div class="check_content">
+            <h2 class="h_forget">Reset Password</h2>
+            <form asp-action="Reset" class="form_check col-12">
+                <input type="hidden" name="Email" value="@Model.Email" />
+                <div class="in_lab col-12">
+                    <label asp-for="Password" class="lab_title col-12">Password</label>
+                    <input asp-for="Password" type="password" class="input_des col-12" />
+                    <span asp-validation-for="Password" class="span_in col-12"></span>
+                </div>
+
+                <div class="in_lab col-12">
+                    <label asp-for="ConfirmPassword" class="lab_title col-12">Confirm Password</label>
+                    <input asp-for="ConfirmPassword" type="password" class="input_des col-12" />
+                    <span asp-validation-for="ConfirmPassword" class="span_in col-12"></span>
+                </div>
+
+                <button type="submit" class="btn_submit">Reset Password</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial.cshtml" />
+}

@@ -1,0 +1,38 @@
+﻿@model List<Country>
+<link rel="stylesheet" href="~/css/countdet.css" />
+
+<div class="main_page col-12">
+    <div class="main_content col-10">
+        <div class="upper_content col-12">
+            <h3 class="h_upper">All Countries</h3>
+            <a href="/Admin/CountryDetail/Create" class="a_upper"><i class="bi bi-plus-circle"></i> Create new country</a>
+        </div>
+        <div class="table_content col-12">
+            <table id="example" class="display" style="width:100%">
+                <thead>
+                    <tr style="background-color:#252525; color:white;">
+                        <th>Name</th>
+                        <th>Number of cities</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>France</td>
+                        <td>1</td>
+                        <td>
+                            <a href="#" class="a_edit"><i class="bi bi-pencil-square"></i> Edit</a>
+                            <a href="#" class="a_delete"><i class="bi bi-trash3"></i> Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        new DataTable('#example');
+    </script>
+}

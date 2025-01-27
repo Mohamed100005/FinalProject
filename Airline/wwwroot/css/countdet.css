@@ -1,0 +1,92 @@
+﻿.main_page {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.main_content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 0.9rem;
+}
+
+.upper_content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.h_upper {
+    color: #252525;
+    margin: 0;
+}
+
+.a_upper {
+    color: white !important;
+    text-decoration: none !important;
+    background-color: #252525;
+    padding: 0.4rem 0.6rem;
+    font-size: 1rem;
+    transition: all ease 100ms;
+}
+
+    .a_upper:hover {
+        background-color: #0e0e0e;
+    }
+
+.table_content {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+.dt-container {
+    width: 100%;
+}
+
+th {
+    text-align: left !important;
+}
+
+td {
+    background-color: white;
+    box-shadow: none !important;
+    text-align: left !important;
+}
+
+.a_edit {
+    color: white !important;
+    text-decoration: none !important;
+    background-color: #ff8f00;
+    padding: 0.5rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    transition: all ease 100ms;
+}
+
+    .a_edit:hover {
+        background-color: #e9890f;
+    }
+
+.a_delete {
+    color: white !important;
+    text-decoration: none !important;
+    background-color: #d11717;
+    padding: 0.5rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    transition: all ease 100ms;
+}
+
+    .a_delete:hover {
+        background-color: #f11c1c;
+    }
