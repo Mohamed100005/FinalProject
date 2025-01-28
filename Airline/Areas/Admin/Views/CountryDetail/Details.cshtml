@@ -1,0 +1,33 @@
+﻿@model Country
+<link rel="stylesheet" href="~/css/countdet.css" />
+
+<div class="main_page col-12">
+    <div class="main_content col-10">
+        <div class="upper_content col-12">
+            <h3 class="h_upper">All Cities</h3>
+         </div>
+        <div class="table_content col-12">
+            <table id="example" class="display" style="width:100%">
+                <thead>
+                    <tr style="background-color:#252525; color:white;">
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.City)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        new DataTable('#example');
+    </script>
+}

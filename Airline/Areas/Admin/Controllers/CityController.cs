@@ -12,33 +12,40 @@ namespace Airline.Areas.Admin.Controllers {
             return View(cities);
         }
         public IActionResult Create() {
-            var countries = _countryRepo.Get().ToList();
-            ViewBag.City = countries;
+            ViewBag.Country = _countryRepo.Get().ToList();
             return View(new City());
         }
         [HttpPost]
         public IActionResult Create(City city) {
+            ModelState.Remove("Country");
             if (ModelState.IsValid) {
                 _cityRepo.Create(city);
+                _cityRepo.Attemp();
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.Country = _countryRepo.Get().ToList();
             return View(city);
         }
         public IActionResult Edit(int id) {
             var city = _cityRepo.GetOne(filter: e => e.Id == id);
+            ViewBag.Country = _countryRepo.Get().ToList();
             return View(city);
         }
         [HttpPost]
         public IActionResult Edit(City city) {
+            ModelState.Remove("Country");
             if (ModelState.IsValid) {
                 _cityRepo.Edit(city);
+                _cityRepo.Attemp();
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.Country = _countryRepo.Get().ToList();
             return View(city);
         }
         public IActionResult Delete(int id) {
             var city = _cityRepo.GetOne(filter: e => e.Id == id);
             _cityRepo.Delete(city);
+            _cityRepo.Attemp();
             return RedirectToAction(nameof(Index));
         }
     }

@@ -1,4 +1,4 @@
-﻿@model CityCategoryVM
+﻿@model Category
 <link rel="stylesheet" href="~/css/countdet.css" />
 
 <div class="main_page col-12">
@@ -7,12 +7,20 @@
             <h1 class="mb-4">
                 Edit categories
             </h1>
-            <form asp-area="admin" asp-controller="Category" asp-action="Create" method="post">
-                <input class="form-control mb-3" type="text" name="name" placeholder="Enter category name" value="@Model.Category.Name" />
-                <select>
-                     @foreach(var item in Model.Cities){
-                        <option value="value">@item.Name</option>
-                     }
+            <form asp-area="Admin" asp-controller="Category" asp-action="Edit" method="post">
+                <input class="form-control mb-3" type="text" name="name" placeholder="Enter category name" value="@Model.Name" />
+                <select class="form-select mb-4" name="cityId">
+                    @foreach (var city in ViewBag.City)
+                    {
+                        if (ViewBag.SelectedCities.Contains(city.Id))
+                        {
+                            <option disabled>@city.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@city.Id">@city.Name</option>
+                        }
+                    }
                 </select>
                 <button class="btn-primary" type="submit">Create</button>
             </form>

@@ -5,17 +5,24 @@
     <div class="main_content col-5">
         <div class="upper_content col-12">
             <h1 class="mb-4">
-                Create a city
+                Edit @Model.Name
             </h1>
-            <form asp-action="Create" method="post">
+            <form asp-action="Edit" method="post">
                 <input class="form-control mb-3" type="text" name="name" placeholder="Enter city name" value="@Model.Name" />
                 <select class="form-select mb-4" name="countryId">
                     @foreach (var item in ViewBag.Country)
                     {
-                        <option value="@item.Id">@item.Name</option>
+                      @if (item.Id == Model.CountryId)
+                            {
+                            <option value="@item.Id" selected > @item.Name  </option>
+                            }
+                            else{
+                            <option value="@item.Id">@item.Name</option>
+                            } 
+                       
                     }
                 </select>
-                <button class="btn-primary" type="submit">Create</button>
+                <button class="btn-primary" type="submit">Edit</button>
             </form>
         </div>
     </div>
